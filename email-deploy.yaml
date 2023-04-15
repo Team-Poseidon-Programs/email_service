@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-api-service 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-api-service
+  template:
+    metadata:
+      labels:
+        app: email-api-service
+    spec:
+      containers:
+      - name: email-api-service
+        image: poseidon2022/emailservice
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
